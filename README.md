@@ -7,7 +7,7 @@ This project is unfinished and will be updated.
 1. npm install
 2. Change database settings from db.config. Can be found @ app/congig/db.config.js
 3. Run node server.js - If a database does not exist it will be created. Server.js will be running @ http://localhost:8080
-4. Run npm start - This will start Paikkatietokanta @ http://localhost:80801
+4. Run npm start - This will start Paikkatietokanta @ http://localhost:8081
 
 ## About ports  
 Node server.js runs @ port 8080
