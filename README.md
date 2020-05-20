@@ -34,7 +34,7 @@ This part makes sure the site is updated correctly if you refresh a page.
 </IfModule> 
 ```
 
-### And this to the /api folder
+#### And this to the /api folder
 This will turn rewrites off. Otherwise Node server's api doesn't work.
 
 ```
