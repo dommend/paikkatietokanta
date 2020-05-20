@@ -10,8 +10,7 @@ This project is unfinished and will be updated.
 4. Run npm start - This will start Paikkatietokanta @ http://localhost:8081
 
 ## About ports  
-Node server.js runs @ port 8080
-Paikkatietokanta runs @ port 8081
+Node server.js runs @ port 8080. Paikkatietokanta runs @ port 8081.
 Any other port won't work if you don't change them from settings.
 
 ## Before running a build script
