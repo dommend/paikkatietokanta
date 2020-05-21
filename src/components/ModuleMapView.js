@@ -130,7 +130,7 @@ const LocationsList = () => {
                   </div>
                   <div class="place-innercontainer">
                     <div className="description white-space">
-                      <div>{currentLocation.description}</div>
+                      {currentLocation.description}
                     </div>
                     <div class="meta">
                       {currentLocation.url

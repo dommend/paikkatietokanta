@@ -94,7 +94,7 @@ const LocationsList = () => {
                 </LeafletMap>
               </div>
               <div className="col-sm description">
-                <p>{location.description}</p>
+                {location.description}
               </div>
               <div className="col-sm control">
                 <p>

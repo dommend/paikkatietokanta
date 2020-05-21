@@ -132,7 +132,7 @@ const LocationsList = () => {
                   </div>
                   <div class="place-innercontainer">
                     <div className="description white-space">
-                      <div>{currentLocation.description}</div>
+                      {currentLocation.description}
                     </div>
                     <div class="meta">
                       {currentLocation.url
@@ -235,9 +235,11 @@ const LocationsList = () => {
                   />
                   <p>
                     <small className="even-smaller">
-                      <strong>Pre-alpha build 1.3.0</strong>
+                      <strong>Pre-alpha build 1.3.2</strong>
                       <br />
                       jani@penttinen.fi
+                      <br />
+                      <a href="https://github.com/dommend/paikkatietokanta">https://github.com/dommend/paikkatietokanta</a>
                     </small>
                   </p>
 
