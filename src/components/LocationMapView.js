@@ -78,7 +78,7 @@ const LocationsList = () => {
                   <Link to={'/view/' + location.id}>{location.title}</Link>
                 </h5>
                 <div className="coordinates">
-                  <span className="material-icons">gps_fixed</span> {''}
+                <Icon class="material-icons">place</Icon>
                   {location.coordinateN}
                   ,
                   {location.coordinateE}

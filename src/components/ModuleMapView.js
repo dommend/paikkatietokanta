@@ -105,7 +105,7 @@ const LocationsList = () => {
                 : ''}
               {location.title} <br />
               <div className="coordinates">
-                <span className="material-icons">gps_fixed</span>
+              <Icon class="material-icons">place</Icon>
                 {[location.coordinateN + ', ' + location.coordinateE]}
               </div>
             </li>
@@ -123,7 +123,7 @@ const LocationsList = () => {
                       : ''}
                   </h4>
                   <div className="coordinates">
-                    <span className="material-icons">gps_fixed</span>
+                   <Icon class="material-icons">place</Icon>
                     {currentLocation.coordinateN}
                     ,
                     {currentLocation.coordinateE}

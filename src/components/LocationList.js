@@ -108,7 +108,7 @@ const LocationsList = () => {
                 : ''}
               {location.title} <br />
               <div className="coordinates">
-                <span className="material-icons">gps_fixed</span>
+                <Icon class="material-icons">place</Icon>
                 {[location.coordinateN + ', ' + location.coordinateE]}
               </div>
             </li>
@@ -126,6 +126,7 @@ const LocationsList = () => {
                       : ''}
                   </h4>
                   <div className="coordinates">
+                    <Icon class="material-icons">place</Icon>
                     {currentLocation.coordinateN}
                     ,
                     {currentLocation.coordinateE}
@@ -235,7 +236,7 @@ const LocationsList = () => {
                   />
                   <p>
                     <small className="even-smaller">
-                      <strong>Pre-alpha build 1.3.2</strong>
+                      <strong><del>Pre-alpha</del> Beta build 1.3.2</strong>
                       <br />
                       jani@penttinen.fi
                       <br />
