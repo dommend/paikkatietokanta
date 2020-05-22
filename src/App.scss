@@ -538,6 +538,7 @@ body.locations-loaded .bottom__pagination { display:block !important;}
 #welcome {
   height: calc(100vh - 100px);
   position: relative;
+  overflow: hidden;
 }
 
 #welcome h1 {
