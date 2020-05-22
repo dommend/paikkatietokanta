@@ -43,9 +43,9 @@ const LocationsList = () => {
   });
 
   return (
-    <div id="fullpage" class="map-view">
+    <div id="fullpage" className="map-view">
       <LeafletMap
-        center={[0, 0]}
+        center={[41, 0]}
         zoom={3}
         maxZoom={20}
         attributionControl={true}
@@ -78,7 +78,7 @@ const LocationsList = () => {
                   <Link to={'/view/' + location.id}>{location.title}</Link>
                 </h5>
                 <div className="coordinates">
-                <Icon class="material-icons">place</Icon>
+                <Icon className="material-icons">place</Icon>
                   {location.coordinateN}
                   ,
                   {location.coordinateE}

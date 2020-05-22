@@ -120,23 +120,6 @@ exports.delete = (req, res) => {
     });
 };
 
-// Delete all Locations from the database.
-exports.deleteAll = (req, res) => {
-  Location.destroy({
-    where: {},
-    truncate: false
-  })
-    .then(nums => {
-      res.send({ message: `${nums} Locations were deleted successfully!` });
-    })
-    .catch(err => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while removing all locations."
-      });
-    });
-};
-
 // find all markedImportant Location
 exports.findAllMarkedImportant = (req, res) => {
   Location.findAll({ where: { markedImportant: true } })

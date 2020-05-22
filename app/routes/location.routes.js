@@ -21,8 +21,5 @@ module.exports = app => {
   // Delete a Location with id
   router.delete("/:id", locations.delete);
 
-  // Create a new Location
-  router.delete("/", locations.deleteAll);
-
   app.use('/api/locations', router);
 };

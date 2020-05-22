@@ -59,10 +59,10 @@ const Location = props => {
   return (
     <div>
       {currentLocation
-        ? <div id="page" class="locationView-page">
-            <div class="container">
-              <div class="row">
-                <div class="col-sm map">
+        ? <div id="page" className="locationView-page">
+            <div className="container">
+              <div className="row">
+                <div className="col-sm map">
                   <LeafletMap
                     center={[
                       currentLocation.coordinateN,
@@ -96,21 +96,21 @@ const Location = props => {
                     </Marker>
                   </LeafletMap>
                 </div>
-                <div class="col-sm details">
+                <div className="col-sm details">
                   <div className="innercontainer">
                     <button
                       type="button"
                       className="go-back"
                       onClick={() => props.history.goBack ()}
                     >
-                      <span class="material-icons">arrow_back_ios</span>
+                      <span className="material-icons">arrow_back_ios</span>
                       {' '}
                       Takaisin edelliselle sivulle
                     </button>
                     <h4>
                       {currentLocation.title}
                       {currentLocation.markedImportant
-                        ? <div class="float-right">
+                        ? <div className="float-right">
                             <Icon className="favorite">favorite</Icon>
                           </div>
                         : ''}
@@ -125,14 +125,13 @@ const Location = props => {
                     <div className="description white-space">
                       {currentLocation.description}
                       <div>
-                        <div class="meta">
+                        <div className="meta">
                           {currentLocation.url
                             ? <a
                                 className="link-to-out"
                                 href={currentLocation.url}
                               >
                                 <Icon className="material-icons">link</Icon>
-                                {' '}
                                 {currentLocation.url}
                               </a>
                             : ''}
@@ -142,20 +141,16 @@ const Location = props => {
                                 href={currentLocation.flickrMore}
                               >
                                 <Icon className="material-icons">link</Icon>
-                                {' '}{' '}
                                 {currentLocation.flickrMore}
                               </a>
                             : ''}
                           {currentLocation.flickrTag
                             ? <div className="flickr-lightbox">
-                                {' '}
                                 <FlickrLightbox
                                   api_key="b74826fa4ce3eeede6aa5bf2949d01a5"
                                   searchTerm={currentLocation.flickrTag}
                                   user_id="53573944@N00"
-                                  limit={153}
                                 />
-                                {' '}
                               </div>
                             : ''}
                           <div>

@@ -1,4 +1,4 @@
-# Paikkatietokanta 1.3.2
+# Paikkatietokanta 1.4.2
 React.js CRUD App with Vue Router & Axios
 
 This project is unfinished and will be updated. 

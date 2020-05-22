@@ -300,6 +300,11 @@ span.required {
   white-space: pre-wrap;
 }
 
+/** Bootstarp buttonit **/
+.btn-secondary { background:$secondary; border-color:$secondary}
+.btn-secondary:hover { background:$special; border-color:$special}
+.btn-secondary.focus, .btn-secondary:focus,
+.btn-secondary:not(:disabled):not(.disabled):active { background:$ok !important; border-color:$ok;} 
 /** Add, edit, places **/
 
 .row {
@@ -345,7 +350,7 @@ small.even-smaller {
 
 #places {
   width: 350px;
-  height: calc(100vh - 120px);
+  height: calc(100vh - 160px);
   position: absolute;
   overflow-y: auto;
 }
@@ -392,8 +397,7 @@ small.even-smaller {
   border-radius: 0px !important;
 }
 
-
-.throbber-loader {
+#location-list .throbber-loader {
   position: absolute !important;
   top: 50vh !important;
   left: 155px !important;
@@ -401,9 +405,42 @@ small.even-smaller {
   font-size: 8px !important;
 }
 
+#page .throbber-loader {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  background: $secondary !important;
+  font-size: 8px !important;
+}
+
+/** Ennen lataamista **/
+.top__pagination, .bottom__pagination { display:none !important;}
+
+/** Lataamisen jläkeen '*/
 body.locations-loaded .throbber-loader {
   display: none !important;
 }
+
+body.locations-loaded .top__pagination,
+body.locations-loaded .bottom__pagination { display:block !important;}
+
+#location-list #filter { text-align: center; width:350px; margin-bottom:10px;}
+#page.location-management #filter { margin-top:0px; margin-bottom:20px !important;}
+#page #filter { text-align:center; margin-top:20px;}
+#page #filter button,
+#location-list #filter button { font-size:.8em !important;}
+#page #filter button .material-icons,
+#location-list #filter button .material-icons { font-size:11px; color:$fifth; top:1px; margin-right:2px; position: relative;}
+
+.btn-secondary.focus, .btn-secondary:focus .material-icons,
+.btn-secondary:not(:disabled):not(.disabled):active .material-icons,
+#page #filter button:hover .material-icons,
+#location-list #filter button:hover .material-icons { color:$neutral1 !important;}
+
+#page #filter button:first-of-type,
+#location-list #filter button:first-of-type { margin-right:5px;}
+#page #filter button:last-of-type,
+#location-list #filter button:last-of-type { margin-left:5px;}
 
 .search {
   padding: 10px 10px 0px 10px;
@@ -418,7 +455,11 @@ body.locations-loaded .throbber-loader {
 .search button {
   position: absolute;
   top: 3px;
+  height:35px;
 }
+
+.search button .material-icons { font-size:.9em;}
+.search input { font-size:.9em;}
 
 #place {
   width: calc(100% - 350px);
@@ -497,7 +538,6 @@ body.locations-loaded .throbber-loader {
 #welcome {
   height: calc(100vh - 100px);
   position: relative;
-  /* overflow-x: hidden; */
 }
 
 #welcome h1 {
@@ -567,12 +607,13 @@ body.locations-loaded .throbber-loader {
   margin: 20px 0px 20px 0px;
 }
 
+a.link-to-out .material-icons,
+a.link-to-out .material-icons,
 a.link-to-flickr .material-icons,
-a.link-to-out .material-icons {
-  font-size: 1.3em;
-  top: 4px;
+a:visited.link-to-flickr .material-icons { 
+  font-size: 1.2em;
   position: relative;
-}
+  margin-right:5px; top:4.5px;} 
 
 .meta {
   margin-top: 20px;
@@ -587,7 +628,7 @@ a.link-to-out,
 a.link-to-out,
 a.link-to-flickr,
 a:visited.link-to-flickr {
-  font-size: .8em;
+  font-size: .75em;
   color: $base2;
   display: block;
   white-space: nowrap;
@@ -595,6 +636,8 @@ a:visited.link-to-flickr {
   -o-text-overflow: ellipsis;
   text-overflow: ellipsis;
 }
+
+
 
 .flickr-lightbox {
   margin: 25px 0px 10px 0px;
@@ -747,7 +790,6 @@ a:visited.link-to-flickr {
 
 .location-management .leaflet-container {
   height: 100% !important;
-  min-height: 80px !important;
 }
 
 .location-management .row {
@@ -762,14 +804,7 @@ a:visited.link-to-flickr {
 
 .location-management .row .description {
   font-size: .8em !important;
-  margin: 0px 20px 20px 20px;
-  overflow: hidden;
-  -o-text-overflow: ellipsis;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
-  /* number of lines to show */
+  margin: 0px 20px 0px 20px;
 }
 
 .location-management .row:nth-of-type(even) {
@@ -787,7 +822,10 @@ a:visited.link-to-flickr {
 .location-management .control .open,
 .location-management .control .edit {
   margin: 0 auto !important;
+  position: relative;
+  top:8px;
 }
+
 
 /** Location single page **/
 .locationView-page .container {
@@ -813,10 +851,14 @@ a:visited.link-to-flickr {
   margin-top: 20px;
 }
 
+h4 .material-icons {
+  display:inline-block;
+  right:20px; position: absolute;
+}
+
 .locationView-page .details .go-back .material-icons {
   font-size: .8em;
   font-weight: bold;
-  ;
 }
 
 .locationView-page .details .go-back {
@@ -838,7 +880,9 @@ a:visited.link-to-flickr {
 .locationView-page .player-wrapper {
   margin-bottom: 40px;
 }
-
+.locationView-page .edit  {
+ margin-top:20px;
+}
 .react-slicer {
   display: block;
 }
@@ -856,7 +900,7 @@ a:visited.link-to-flickr {
   position: absolute;
   text-align: center;
   width: 100%;
-  margin-left: -20px;
+  margin-left: -15px;
   padding: 0px;
 
 }
@@ -1007,6 +1051,8 @@ a:visited.link-to-flickr {
 
 @media screen and (max-width: 850px) {
 
+  #location-list #filter { width:250px;}
+
   #location-list .search,
   #location-list #places {
     width: 250px !important;
@@ -1020,6 +1066,9 @@ a:visited.link-to-flickr {
 
 
 @media screen and (max-width: 766px) {
+
+  form .subdetails { margin:0px;}
+
   #page.locationView-page {
     background: $neutral1;
   }
@@ -1028,13 +1077,13 @@ a:visited.link-to-flickr {
     text-align: center;
     margin-bottom: 0px;
   }
-
+ 
   .subdetails .col-sm-4,
   .subdetails .col-sm-5 {
     max-width: 100% !important;
   }
 
-  .editlocation .subdetails .col-sm5 {
+  .subdetails .col-sm-5 {
     margin: 0px !important;
     padding: 0px !important;
   }
@@ -1110,6 +1159,8 @@ a:visited.link-to-flickr {
 
 @media screen and (max-width: 600px) {
 
+  #location-list #filter { width:100%;}
+
   .scramble-container {
     font-size: 1.1em !important;
     width: 100% !important;
@@ -1131,7 +1182,7 @@ a:visited.link-to-flickr {
 
   #location-list #places {
     width: 100% !important;
-    height: calc(40vh - 130px) !important;
+    height: calc(40vh - 170px) !important;
   }
 
   #location-list #place {

@@ -6,6 +6,9 @@ import Icon from '@material-ui/core/Icon';
 import {icon as leafletIcon} from 'leaflet';
 import Slicer from 'react-slicer';
 import 'react-slicer/build/react-slicer.css';
+import {Throbber} from 'css-spinners-react';
+import ShowMoreText from 'react-show-more-text';
+
 
 const LocationsList = () => {
   const [locations, setLocations] = useState ([]);
@@ -15,9 +18,10 @@ const LocationsList = () => {
   }, []);
 
   const retrieveLocations = () => {
-    LocationDataService.getAll ()
+    LocationDataService.getAll()
       .then (response => {
         setLocations (response.data.reverse ());
+        document.body.classList.add ('locations-loaded');
         console.log (response.data);
       })
       .catch (e => {
@@ -25,6 +29,17 @@ const LocationsList = () => {
       });
   };
 
+  const findAllmarkedImportant =() => {
+    LocationDataService.findMarkedImportant () 
+      .then (response => {
+        setLocations (response.data.reverse ());
+        console.log (response.data);
+      })
+      .catch (e => {
+        console.log (e);
+      });
+  }
+  
   const customMarkerIcon = leafletIcon ({
     iconUrl: require ('../resources/marker.png'),
     shadowUrl: require ('../resources/marker-shadow.png'),
@@ -44,7 +59,27 @@ const LocationsList = () => {
 
   return (
     <div id="page" className="location-management">
+
+<div id="filter">
+      <button
+            className="btn btn-secondary"
+            type="button"
+            onClick={retrieveLocations}
+          >
+            <span class="material-icons">map</span>  Kaikki
+          </button>
+        <button
+            className="btn btn-secondary"
+            type="button"
+            onClick={findAllmarkedImportant}
+          >
+            <Icon className="favorite">favorite</Icon> Tärkeäksi merkatut
+          </button>
+      </div>
+
+      <Throbber />
       <Slicer initialPage={1} itemsPerPage={100}>
+        
         {locations &&
           locations.map ((location, index) => (
             <div key={index} className="row">
@@ -59,8 +94,8 @@ const LocationsList = () => {
                     {location.title}
                   </Link>
                 </h6>
-                <div class="coordinates">
-                  <Icon class="material-icons">place</Icon>
+                <div className="coordinates">
+                  <Icon className="material-icons">place</Icon>
                   {location.coordinateN},
                   {location.coordinateE}
                 </div>
@@ -94,7 +129,16 @@ const LocationsList = () => {
                 </LeafletMap>
               </div>
               <div className="col-sm description">
+              <ShowMoreText       
+                lines={3}
+                more='Näytä enemmän'
+                less='Näytä vähemmän'
+                anchorClass=''
+                expanded={false}
+            >
                 {location.description}
+                </ShowMoreText>
+
               </div>
               <div className="col-sm control">
                 <p>

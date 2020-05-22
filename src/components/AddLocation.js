@@ -88,7 +88,7 @@ const AddLocation = () => {
         ? <div className="innercontainer text-center">
             <h4>Paikka lisätty onnistuneesti tietokantaan!</h4>
             <p>
-              <span class="material-icons">
+              <span className="material-icons">
                 thumb_up_alt
               </span>
             </p>
@@ -116,7 +116,7 @@ const AddLocation = () => {
                   <div>
                     <div className="form-group together">
                       <label htmlFor="title">
-                        Otsikko<span class="required">*</span>
+                        Otsikko<span className="required">*</span>
                       </label>
                       <input
                         type="text"
@@ -198,7 +198,9 @@ const AddLocation = () => {
                     <label htmlFor="description">Upota video</label> <br />
                     <small>
                       Huom! Älä käytä upotus-koodia,
-                      <span class="required">pelkkä URL-osoite</span>
+                      {' '}
+                      <span className="required">pelkkä URL-osoite</span>
+                      {' '}
                       riittää.
                     </small>
                     <input

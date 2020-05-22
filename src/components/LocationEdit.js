@@ -118,7 +118,7 @@ const Location = props => {
                 <div className="col-sm">
                   <div className="form-group">
                     <label htmlFor="title">
-                      Otsikko<span class="required">*</span>
+                      Otsikko<span className="required">*</span>
                     </label>
                     <input
                       type="text"
@@ -200,7 +200,7 @@ const Location = props => {
                     <small>
                       Huom! Älä käytä upotus-koodia,
                       {' '}
-                      <span class="required">pelkkä URL-osoite</span>
+                      <span className="required">pelkkä URL-osoite</span>
                       {' '}
                       riittää.
                     </small>
@@ -298,7 +298,7 @@ const Location = props => {
               </div>
             </form>
           </div>
-        : <div class="innerwidth text-center">
+        : <div className="innerwidth text-center">
             <br />
             <p>Paikka poistettu kannasta.</p>
             <p><a href="./">Palaa etusivulle.</a></p>

@@ -3,7 +3,7 @@ import React from 'react';
 class Info extends React.Component {
   render () {
     return (
-      <div id="page" class="content-page">
+      <div id="page" className="content-page">
         <div className="innerwidth">
           <div className="innercontainer">
             <h2>Tietoa paikkatietokannasta</h2>

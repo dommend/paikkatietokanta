@@ -24,11 +24,16 @@ const findByTitle = title => {
   return http.get(`/locations?title=${title}`);
 };
 
+const findMarkedImportant = () => {
+  return http.get(`/locations/markedImportant`);
+}
+
 export default {
   getAll,
   get,
   create,
   update,
   remove,
-  findByTitle
+  findByTitle,
+  findMarkedImportant
 };

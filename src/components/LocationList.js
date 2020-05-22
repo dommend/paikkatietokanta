@@ -44,13 +44,41 @@ const LocationsList = () => {
   const findByTitle = () => {
     LocationDataService.findByTitle (searchTitle)
       .then (response => {
-        setLocations (response.data);
+        setLocations (response.data.reverse());
         console.log (response.data);
       })
       .catch (e => {
         console.log (e);
       });
   };
+
+
+  const findAllmarkedImportant = () => {
+    LocationDataService.findMarkedImportant () 
+      .then (response => {
+        setLocations (response.data.reverse ());
+        setCurrentLocation (null);
+        setCurrentIndex (null);
+        console.log (response.data);
+      })
+      .catch (e => {
+        console.log (e);
+      });
+  }
+
+
+  const findAllLocations = () => {
+    LocationDataService.getAll () 
+      .then (response => {
+        setLocations (response.data.reverse ());
+        setCurrentLocation (null);
+        setCurrentIndex (null);
+        console.log (response.data);
+      })
+      .catch (e => {
+        console.log (e);
+      });
+  }
 
   const customMarkerIcon = leafletIcon ({
     iconUrl: require ('../resources/marker.png'),
@@ -70,8 +98,14 @@ const LocationsList = () => {
     popupAnchor: [0, -10],
   });
 
+ const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      findByTitle()
+    }
+  }
+
   return (
-    <div id="location-list">
+    <div id="location-list" className="frontpage">
       <div className="search input-group mb-3">
         <input
           type="text"
@@ -79,16 +113,33 @@ const LocationsList = () => {
           placeholder="Hae otsikon perusteella"
           value={searchTitle}
           onChange={onChangeSearchTitle}
+          onKeyDown={handleKeyDown}
         />
         <div className="input-group-append">
           <button
-            className="btn btn-outline-secondary"
+            className="btn btn-secondary"
             type="button"
             onClick={findByTitle}
           >
-            Etsi
+            <span class="material-icons">search</span>
           </button>
         </div>
+      </div>
+      <div id="filter">
+      <button
+            className="btn btn-secondary"
+            type="button"
+            onClick={findAllLocations}
+          >
+          <span class="material-icons">map</span>  Kaikki
+          </button>
+        <button
+            className="btn btn-secondary"
+            type="button"
+            onClick={findAllmarkedImportant}
+          >
+            <Icon className="favorite">favorite</Icon> Tärkeäksi merkatut
+          </button>
       </div>
       <Throbber />
       <ul id="places" className="list-group">
@@ -102,13 +153,13 @@ const LocationsList = () => {
               onClick={() => setActiveLocation (location, index)}
             >
               {location.markedImportant
-                ? <div class="float-right">
+                ? <div className="float-right">
                     <Icon className="favorite">favorite</Icon>
                   </div>
                 : ''}
               {location.title} <br />
               <div className="coordinates">
-                <Icon class="material-icons">place</Icon>
+                <Icon className="material-icons">place</Icon>
                 {[location.coordinateN + ', ' + location.coordinateE]}
               </div>
             </li>
@@ -126,16 +177,18 @@ const LocationsList = () => {
                       : ''}
                   </h4>
                   <div className="coordinates">
-                    <Icon class="material-icons">place</Icon>
+                    <Icon className="material-icons">place</Icon>
                     {currentLocation.coordinateN}
                     ,
                     {currentLocation.coordinateE}
                   </div>
-                  <div class="place-innercontainer">
+                  <div className="place-innercontainer">
                     <div className="description white-space">
+    
                       {currentLocation.description}
+
                     </div>
-                    <div class="meta">
+                    <div className="meta">
                       {currentLocation.url
                         ? <a className="link-to-out" href={currentLocation.url}>
                             <Icon className="material-icons">link</Icon>
@@ -152,12 +205,12 @@ const LocationsList = () => {
                           </a>
                         : ''}
                       {currentLocation.flickrTag
-                        ? <div className="flickr-lightbox">
+                        ? 
+                        <div className="flickr-lightbox">
                             <FlickrLightbox
                               api_key="b74826fa4ce3eeede6aa5bf2949d01a5"
                               searchTerm={currentLocation.flickrTag}
                               user_id="53573944@N00"
-                              limit={152}
                             />
                           </div>
                         : ''}
@@ -182,7 +235,6 @@ const LocationsList = () => {
                     >
                       Avaa uudessa ikkunassa
                     </Link>
-
                     <Link
                       to={'/edit/' + currentLocation.id}
                       className="edit-page button"
@@ -190,7 +242,6 @@ const LocationsList = () => {
                       Muokkaa
                     </Link>
                   </div>
-
                 </div>
               </div>
               <LeafletMap
@@ -236,14 +287,13 @@ const LocationsList = () => {
                   />
                   <p>
                     <small className="even-smaller">
-                      <strong><del>Pre-alpha</del> Beta build 1.3.2</strong>
+                      <strong><del>Pre-alpha</del> Beta build 1.4.2</strong>
                       <br />
                       jani@penttinen.fi
                       <br />
                       <a href="https://github.com/dommend/paikkatietokanta">https://github.com/dommend/paikkatietokanta</a>
                     </small>
                   </p>
-
                   <MainScreen />
                 </div>
               </div>
