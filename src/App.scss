@@ -1184,6 +1184,9 @@ h4 .material-icons {
 
 
 @media screen and (max-width: 766px) {
+  #page.content-page .row { margin:0px -20px 0 0 !important;}
+  #page.content-page .col-sm:first-of-type { margin-top:0px;} 
+  #page.content-page .col-sm { min-width:100%; margin-top:30px; }
 
   form .subdetails { margin:0px;}
 
@@ -1195,7 +1198,7 @@ h4 .material-icons {
     text-align: center;
     margin-bottom: 0px;
   }
- 
+
   .subdetails .col-sm-4,
   .subdetails .col-sm-5 {
     max-width: 100% !important;
