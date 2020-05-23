@@ -115,84 +115,8 @@ ul#places::-webkit-scrollbar-thumb,
   flex-wrap: wrap;
 }
 
-/** Nav **/
-.navbar {
-  z-index: 9991 !important;
-  position: relative;
-  width: 100%;
-}
-
-
-.navbar-dark .navbar-brand { font-size:.9em; font-weight: bold;
-margin-left:-10px; margin-right:0px}
-
-nav {
-  background: $primary;
-  color: $neutral1;
-}
-
-nav a,
-nav a:visited {
-  font-size:.95em;
-  color: $neutral1 !important;
-  margin: 0px 5px 0px 5px;
-  border-radius: 5px;
-  padding:8px 10px 9px 10px !important;
-}
-
-nav ul {
-  margin: 0px;
-  padding: 0px;
-  display: inline;
-}
-
-nav ul li {
-  list-style: none;
-  display: inline-block;
-}
-
-nav a:hover,
-nav a:active,
-nav .nav-link.active,
-nav .nav-link.active:hover {
-  color: $neutral1;
-  background: $secondary;
-}
-
-nav a .material-icons {
-  font-size:15px !important;
-  position:relative;
-  top:2.5px;
-  margin-right:2px;
-}
-
-nav .nav-link.add-new {
-  background: $secondary;
-  right: 16px;
-  position: absolute;
-  top: 8px;
-}
-
-nav .nav-link.add-new:hover {
-  background: $special;
-}
-
-nav #logo:hover {
-  background: transparent;
-}
-
-nav .navbar-toggler {
-  border-color: $neutral4;
-}
-
-nav .navbar-toggler-icon {
-  background-image: url("data:image/svg+xml,<svg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'><path stroke='rgba(255,255,255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/></svg>") !important;
-}
-
-nav a.navbar-brand:hover,
-nav a.navbar-brand:active {
-  background: transparent !important;
-}
+a, a:visited { color:$secondary;}
+a:hover, a:active { color:$special;}
 
 /** Base **/
 .container {
@@ -382,6 +306,85 @@ small {
 small.even-smaller {
   font-size: .69em;
   color: #999;
+}
+
+/** Nav **/
+.navbar {
+  z-index: 9991 !important;
+  position: relative;
+  width: 100%;
+}
+
+
+.navbar-dark .navbar-brand { font-size:.9em; font-weight: bold;
+margin-left:-10px; margin-right:0px}
+
+nav {
+  background: $primary;
+  color: $neutral1;
+}
+
+nav a,
+nav a:visited {
+  font-size:.95em;
+  color: $neutral1 !important;
+  margin: 0px 5px 0px 5px;
+  border-radius: 5px;
+  padding:8px 10px 9px 10px !important;
+}
+
+nav ul {
+  margin: 0px;
+  padding: 0px;
+  display: inline;
+}
+
+nav ul li {
+  list-style: none;
+  display: inline-block;
+}
+
+nav a:hover,
+nav a:active,
+nav .nav-link.active,
+nav .nav-link.active:hover {
+  color: $neutral1;
+  background: $secondary;
+}
+
+nav a .material-icons {
+  font-size:15px !important;
+  position:relative;
+  top:2.5px;
+  margin-right:2px;
+}
+
+nav .nav-link.add-new {
+  background: $secondary;
+  right: 16px;
+  position: absolute;
+  top: 8px;
+}
+
+nav .nav-link.add-new:hover {
+  background: $special;
+}
+
+nav #logo:hover {
+  background: transparent;
+}
+
+nav .navbar-toggler {
+  border-color: $neutral4;
+}
+
+nav .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,<svg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'><path stroke='rgba(255,255,255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/></svg>") !important;
+}
+
+nav a.navbar-brand:hover,
+nav a.navbar-brand:active {
+  background: transparent !important;
 }
 
 /** List view (Frontpage) **/
