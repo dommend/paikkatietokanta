@@ -27,7 +27,7 @@ class Info extends React.Component {
 
               <div class="col-sm">
                 <div class="text-center">
-                  <img src={Diver} style={{ width: '300px' }} alt="Diver" />
+                  <img src={Diver} style={{ width: '280px' }} alt="Diver" />
                 </div>
               </div>
 
