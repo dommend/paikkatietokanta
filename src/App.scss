@@ -119,6 +119,10 @@ ul#places::-webkit-scrollbar-thumb,
   width: 100%;
 }
 
+
+.navbar-dark .navbar-brand { font-size:.9em; font-weight: bold;
+margin-left:-10px; margin-right:0px}
+
 nav {
   background: $primary;
   color: $neutral1;
@@ -126,9 +130,11 @@ nav {
 
 nav a,
 nav a:visited {
+  font-size:.95em;
   color: $neutral1 !important;
   margin: 0px 5px 0px 5px;
   border-radius: 5px;
+  padding:8px 10px 9px 10px !important;
 }
 
 nav ul {
@@ -148,6 +154,13 @@ nav .nav-link.active,
 nav .nav-link.active:hover {
   color: $neutral1;
   background: $secondary;
+}
+
+nav a .material-icons {
+  font-size:15px !important;
+  position:relative;
+  top:2.5px;
+  margin-right:2px;
 }
 
 nav .nav-link.add-new {
@@ -1069,7 +1082,6 @@ h4 .material-icons {
     width: 400px !important;
     font-size: 1em !important;
   }
-
 }
 
 @media screen and (max-width: 875px) {
@@ -1224,7 +1236,7 @@ h4 .material-icons {
 
   div#basic-navbar-nav {
     background: $fourth;
-    margin: 10px -16px -12px;
+    margin: 10px -16px -8px;
   }
 }
 
@@ -1311,12 +1323,13 @@ h4 .material-icons {
   }
 }
 
-
-
 @media screen and (max-width: 575px) { 
+  #page.content-page .innercontainer,
+  #page.content-page .innerwidth { margin:0px !important;}
   .location-management .row .description { padding:0px; margin:-20px 0 0 0 !important;}
-  .location-management .row .control { margin:15px 0px 0px 0px;}
-  .location-management .row .control a { margin:0px !important;}
+  .location-management .row .control { margin:15px 0px 0px 0px; flex-direction: row;}
+  .location-management .row .control a.open { margin:0px 5px 0px 0px !important;}
+  .location-management .row .control a.edit { margin:0px 0px 0px 5px !important;}
 }
 
 @media screen and (max-width: 500px) {

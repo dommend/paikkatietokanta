@@ -298,7 +298,7 @@ const LocationsList = () => {
                 />
                 <p>
                   <small className="even-smaller">
-                    <strong><del>Pre-alpha</del> Beta build 1.4.5</strong>
+                    <strong><del>Pre-alpha</del> Beta build 1.4.6</strong>
                     <br />
                       jani@penttinen.fi
                       <br />

@@ -28,38 +28,38 @@ function App() {
             <ul>
               <li className="nav-item">
                 <NavLink to={"/locations"} className="nav-link frontpage" activeClassName="active">
-                  Etusivu
+                <span className="material-icons">home</span> Etusivu
               </NavLink >
               </li>
               <li className="nav-item">
                 <NavLink to={"/module-view"} className="nav-link module" activeClassName="active">
-                  Moduuli
+                <span className="material-icons">dashboard</span>  Moduuli
               </NavLink >
               </li>
               <li className="nav-item">
                 <NavLink to={"/map-view"} className="nav-link map" activeClassName="active">
-                  Kartta
+                <span className="material-icons">map</span>  Map
               </NavLink >
               </li>
               <li className="nav-item">
                 <NavLink to={"/grid-view"} className="nav-link grid" activeClassName="active">
-                  Ruudukko
+                <span className="material-icons">grid_on</span>   Gridi
               </NavLink >
               </li>
               <li className="nav-item">
                 <NavLink to={"/locations-management"} className="nav-link list" activeClassName="active">
-                  Lista
+                <span className="material-icons">reorder</span>  Lista
               </NavLink >
               </li>
               <li className="nav-item">
                 <NavLink to={"/info"} className="nav-link info" activeClassName="active">
-                  Info
+                <span className="material-icons">info</span>  Info
               </NavLink >
               </li>
 
               <li className="nav-item">
                 <NavLink to={"/add"} className="nav-link add-new" activeClassName="active">
-                  Lisää paikka
+                <span className="material-icons">add_box</span> Lisää
               </NavLink >
               </li>
             </ul>
