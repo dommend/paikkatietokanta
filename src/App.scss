@@ -25,9 +25,10 @@ $neutral6: #ddd;
 $neutral7: #f9f9f9;
 
 $alert: red;
-$ok: green;
-$ok-hover: lightgreen;
+$ok: rgb(13, 163, 46);
+$ok-hover: rgb(15, 209, 57);
 $special: orange;
+$special-hover: rgb(255, 238, 0);
 $favorie: crimson;
 
 /** General **/
@@ -150,14 +151,14 @@ nav .nav-link.active:hover {
 }
 
 nav .nav-link.add-new {
-  background: $ok;
-  right: 10px;
+  background: $secondary;
+  right: 16px;
   position: absolute;
-  top: 8px,
+  top: 8px;
 }
 
 nav .nav-link.add-new:hover {
-  background: $ok-hover;
+  background: $special;
 }
 
 nav #logo:hover {
@@ -192,6 +193,7 @@ nav a.navbar-brand:active {
   width: 100%;
   position: absolute;
   overflow-y: auto;
+  overflow-x: hidden;
   background: $neutral3;
 }
 
@@ -348,11 +350,19 @@ small.even-smaller {
 
 /** List view (Frontpage) **/
 
+aside {    
+  border-right: 1px solid $neutral2 !important;
+  width: 351px;
+  position: absolute;
+  height: 100vh;
+  z-index: 9991;}
+
 #places {
   width: 350px;
   height: calc(100vh - 160px);
   position: absolute;
   overflow-y: auto;
+  border-top:1px solid $neutral2;
 }
 
 
@@ -414,13 +424,15 @@ small.even-smaller {
 }
 
 /** Ennen lataamista **/
-.top__pagination, .bottom__pagination { display:none !important;}
+.top__pagination, .bottom__pagination,
+.location-management #filter, .locationGrid-page #filter { display:none !important;}
 
-/** Lataamisen jläkeen '*/
+/** Lataamisen jäkeen */
+
 body.locations-loaded .throbber-loader {
   display: none !important;
 }
-
+body.locations-loaded .location-management #filter, body.locations-loaded .locationGrid-page #filter,
 body.locations-loaded .top__pagination,
 body.locations-loaded .bottom__pagination { display:block !important;}
 
@@ -541,6 +553,7 @@ body.locations-loaded .bottom__pagination { display:block !important;}
   overflow: hidden;
 }
 
+
 #welcome h1 {
   font-size: 5vw;
   font-weight: bold;
@@ -592,6 +605,17 @@ body.locations-loaded .bottom__pagination { display:block !important;}
   position: absolute;
 }
 
+
+.module-view .welcome { 
+   text-align:center;
+   margin: 0;
+   position: absolute;
+   top: 50.5%;
+   left: 50%;
+   margin-right: -50%;
+   transform: translate(-50%, -50%) 
+  }
+
 /** Single page and Location list **/
 
 .coordinates {
@@ -614,7 +638,7 @@ a.link-to-flickr .material-icons,
 a:visited.link-to-flickr .material-icons { 
   font-size: 1.2em;
   position: relative;
-  margin-right:5px; top:4.5px;} 
+  margin-right:5px; top:4px;} 
 
 .meta {
   margin-top: 20px;
@@ -638,15 +662,27 @@ a:visited.link-to-flickr {
   text-overflow: ellipsis;
 }
 
-
-
+.flickr-lightbox-container { position: relative;}
+.flickr-lightbox div { background:$neutral1;}
 .flickr-lightbox {
   margin: 25px 0px 10px 0px;
+  min-height:45px;
+  position:relative;
+  z-index:1;
 }
 
 .flickr-lightbox img {
   width: 55px;
+  height: 55px;
+  background:$neutral5;
+  position:relative;
 }
+
+.flickr-lightbox-container .three-quarters-loader { 
+ position:absolute !important; 
+ left:50% !important; top:15px !important;
+ }
+
 
 /** Map-view **/
 
@@ -890,7 +926,7 @@ h4 .material-icons {
 
 .location-management .top__pagination,
 .location-management .bottom__pagination {
-  margin-left: 0px;
+  margin-left: 5px;
 }
 
 .top__pagination,
@@ -901,7 +937,7 @@ h4 .material-icons {
   position: absolute;
   text-align: center;
   width: 100%;
-  margin-left: -15px;
+  margin-left: -18px;
   padding: 0px;
 
 }
@@ -951,6 +987,11 @@ h4 .material-icons {
 }
 
 
+/** Sisältösivut **/
+.content-page p { max-width: calc(90em * 0.5); }
+.content-page h3 { margin-top:40px;}
+.content-page h5 { margin-top:30px;}
+.content-page h6 { margin-top:0px;}
 
 /** Video, lightbox, player & toast **/
 
@@ -1032,7 +1073,39 @@ h4 .material-icons {
 }
 
 @media screen and (max-width: 875px) {
+
+
+  #location-list .throbber-loader {
+    left: 105px !important;
+  }
+
+  .location-management .row {
+    margin: 0px !important;
+  }
+
+  .location-management .row:last-of-type {
+    margin-bottom: 30px !important;
+  }
+
+  .location-management .headline,
+  .location-management .map {
+    margin: 10px 0px 10px 0px;
+  }
+
+  .location-management .description {
+    margin: 0px !important;
+    font-size: .7em !important;
+    padding: 10px;
+  }
+
   .location-management .control {
+    flex-direction: row;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
     flex-direction: column;
     align-items: center;
     text-align: center;
@@ -1040,18 +1113,15 @@ h4 .material-icons {
 
   .location-management .control a.open,
   .location-management .control a.edit {
+    width: auto !important;
+    margin: 5px 0px 0px 0px !important;
     width: 100px !important;
     margin: 0px !important;
-  }
-
-  .location-management .row .description {
-    font-size: .7em !important;
-    padding: 10px;
   }
 }
 
 @media screen and (max-width: 850px) {
-
+  aside { width:251px;}
   #location-list #filter { width:250px;}
 
   #location-list .search,
@@ -1160,13 +1230,28 @@ h4 .material-icons {
 
 @media screen and (max-width: 600px) {
 
+  nav .module { display:none;}
+
+  aside { width:100%; border:none; z-index:0;}
+
+  #page .throbber-loader {
+    left: 48% !important;
+  }
+
+  #location-list .throbber-loader {
+    left: 46% !important;
+    top:150px !important;
+  }
+  
+  #places .list-group-item { padding:3px 10px 3px 10px;}
+  #places .list-group-item .coordinates { display:none;}
+
   #location-list #filter { width:100%;}
 
   .scramble-container {
     font-size: 1.1em !important;
     width: 100% !important;
   }
-
 
   #location-list .search {
     width: 100% !important;
@@ -1183,13 +1268,13 @@ h4 .material-icons {
 
   #location-list #places {
     width: 100% !important;
-    height: calc(40vh - 170px) !important;
+    height: calc(50vh - 170px) !important;
   }
 
   #location-list #place {
     width: 100% !important;
-    height: 70vh;
-    top: calc(40vh - 67px);
+    height: 60vh;
+    top: calc(50vh - 67px);
     left: 0px !important;
     position: absolute !important;
     border: 1px solid $neutral3;
@@ -1226,48 +1311,12 @@ h4 .material-icons {
   }
 }
 
-@media screen and (max-width: 875px) {
 
-  .location-management .row {
-    margin: 0px !important;
-  }
 
-  .location-management .row:last-of-type {
-    margin-bottom: 30px !important;
-  }
-
-  .location-management .headline,
-  .location-management .map {
-    margin: 10px 0px 10px 0px;
-  }
-
-  .location-management .description {
-    margin: 0px !important;
-  }
-
-  .location-management .control {
-    flex-direction: row;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-  }
-
-  .location-management .control a.open,
-  .location-management .control a.edit {
-    width: auto !important;
-    margin: 5px 0px -10px 0px !important;
-  }
-
-  .location-management .control a.open {
-    margin-right: 5px !important;
-  }
-
-  .location-management .control a.edit {
-    margin-left: 5px !important;
-  }
+@media screen and (max-width: 575px) { 
+  .location-management .row .description { padding:0px; margin:-20px 0 0 0 !important;}
+  .location-management .row .control { margin:15px 0px 0px 0px;}
+  .location-management .row .control a { margin:0px !important;}
 }
 
 @media screen and (max-width: 500px) {

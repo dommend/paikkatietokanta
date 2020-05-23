@@ -6,7 +6,7 @@ import Icon from '@material-ui/core/Icon';
 import ReactPlayer from 'react-player';
 import FlickrLightbox from 'react-flickr-lightbox';
 import {icon as leafletIcon} from 'leaflet';
-import {Throbber} from 'css-spinners-react';
+import {Throbber, ThreeQuarters} from 'css-spinners-react';
 
 const LocationsList = () => {
   const [locations, setLocations] = useState ([]);
@@ -27,6 +27,7 @@ const LocationsList = () => {
     LocationDataService.getAll () 
     // Jos halutaan saada kaikki tärkeäksi merkatut: findMarkedImportant //
       .then (response => {
+        document.body.classList.remove ('locations-loaded');
         setLocations (response.data.reverse ());
         document.body.classList.add ('locations-loaded');
         console.log (response.data);
@@ -105,6 +106,7 @@ const LocationsList = () => {
 
   return (
     <div id="location-list" className="module-view">
+      <aside>
       <div className="search input-group mb-3">
         <input
           type="text"
@@ -120,18 +122,17 @@ const LocationsList = () => {
             type="button"
             onClick={findByTitle}
           >
-            <span class="material-icons">search</span>
+            <span className="material-icons">search</span>
           </button>
         </div>
       </div>
-
       <div id="filter">
       <button
             className="btn btn-secondary"
             type="button"
             onClick={findAllLocations}
           >
-          <span class="material-icons">map</span>  Kaikki
+          <span className="material-icons">map</span>  Kaikki
           </button>
         <button
             className="btn btn-secondary"
@@ -141,7 +142,6 @@ const LocationsList = () => {
             <Icon className="favorite">favorite</Icon> Tärkeäksi merkatut
           </button>
       </div>
-      
       <Throbber />
       <ul id="places" className="list-group">
         {locations &&
@@ -165,7 +165,7 @@ const LocationsList = () => {
               </div>
             </li>
           ))}
-      </ul>
+      </ul></aside>
       <div id="place">
         {currentLocation
           ? <div>
@@ -178,16 +178,16 @@ const LocationsList = () => {
                       : ''}
                   </h4>
                   <div className="coordinates">
-                   <Icon class="material-icons">place</Icon>
+                   <Icon className="material-icons">place</Icon>
                     {currentLocation.coordinateN}
                     ,
                     {currentLocation.coordinateE}
                   </div>
-                  <div class="place-innercontainer">
+                  <div className="place-innercontainer">
                     <div className="description white-space">
                       {currentLocation.description}
                     </div>
-                    <div class="meta">
+                    <div className="meta">
                       {currentLocation.url
                         ? <a className="link-to-out" href={currentLocation.url}>
                             <Icon className="material-icons">link</Icon>
@@ -203,15 +203,18 @@ const LocationsList = () => {
                             {currentLocation.flickrMore}
                           </a>
                         : ''}
-                      {currentLocation.flickrTag
-                        ? <div className="flickr-lightbox">
-                            {' '}
+                       {currentLocation.flickrTag
+                        ? 
+                        <div className="flickr-lightbox-container">
+                           <ThreeQuarters />
+                        <div className="flickr-lightbox">  
                             <FlickrLightbox
                               api_key="b74826fa4ce3eeede6aa5bf2949d01a5"
                               searchTerm={currentLocation.flickrTag}
                               user_id="53573944@N00"
                             />
-                          </div>
+                        </div> 
+                        </div>
                         : ''}
                       {currentLocation.videoEmbed
                         ? <div className="player-wrapper">
@@ -231,7 +234,7 @@ const LocationsList = () => {
                       to={'/view/' + currentLocation.id}
                       className="open-page button"
                     >
-                      Avaa uudessa ikkunassa
+                      Avaa
                     </Link>
                     <Link
                       to={'/edit/' + currentLocation.id}
@@ -278,7 +281,11 @@ const LocationsList = () => {
             </div>
           : <div className="innercontainer">
               <div className="welcome">
-                <h1>Module view</h1>
+                  <img
+                    src={require ('../resources/happyrobot.gif')}
+                    width="300"
+                    alt="Happy Robot"
+                  />
               </div>
             </div>}
       </div>

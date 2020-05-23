@@ -27,32 +27,32 @@ function App() {
           <Nav className="mr-auto navbar-nav">
             <ul>
               <li className="nav-item">
-                <NavLink to={"/locations"} className="nav-link" activeClassName="active">
+                <NavLink to={"/locations"} className="nav-link frontpage" activeClassName="active">
                   Etusivu
               </NavLink >
               </li>
               <li className="nav-item">
-                <NavLink to={"/module-view"} className="nav-link" activeClassName="active">
+                <NavLink to={"/module-view"} className="nav-link module" activeClassName="active">
                   Moduuli
               </NavLink >
               </li>
               <li className="nav-item">
-                <NavLink to={"/map-view"} className="nav-link" activeClassName="active">
+                <NavLink to={"/map-view"} className="nav-link map" activeClassName="active">
                   Kartta
               </NavLink >
               </li>
               <li className="nav-item">
-                <NavLink to={"/grid-view"} className="nav-link" activeClassName="active">
+                <NavLink to={"/grid-view"} className="nav-link grid" activeClassName="active">
                   Ruudukko
               </NavLink >
               </li>
               <li className="nav-item">
-                <NavLink to={"/locations-management"} className="nav-link" activeClassName="active">
+                <NavLink to={"/locations-management"} className="nav-link list" activeClassName="active">
                   Lista
               </NavLink >
               </li>
               <li className="nav-item">
-                <NavLink to={"/info"} className="nav-link" activeClassName="active">
+                <NavLink to={"/info"} className="nav-link info" activeClassName="active">
                   Info
               </NavLink >
               </li>

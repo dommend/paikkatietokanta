@@ -6,6 +6,8 @@ import ReactPlayer from 'react-player';
 import FlickrLightbox from 'react-flickr-lightbox';
 import Icon from '@material-ui/core/Icon';
 import {icon as leafletIcon} from 'leaflet';
+import {ThreeQuarters} from 'css-spinners-react';
+
 
 const Location = props => {
   const initialLocationState = {
@@ -143,16 +145,19 @@ const Location = props => {
                                 <Icon className="material-icons">link</Icon>
                                 {currentLocation.flickrMore}
                               </a>
-                            : ''}
+                            : ''}              
                           {currentLocation.flickrTag
-                            ? <div className="flickr-lightbox">
-                                <FlickrLightbox
-                                  api_key="b74826fa4ce3eeede6aa5bf2949d01a5"
-                                  searchTerm={currentLocation.flickrTag}
-                                  user_id="53573944@N00"
-                                />
-                              </div>
-                            : ''}
+                            ?       <div className="flickr-lightbox-container">
+                            <ThreeQuarters />
+                         <div className="flickr-lightbox">  
+                             <FlickrLightbox
+                               api_key="b74826fa4ce3eeede6aa5bf2949d01a5"
+                               searchTerm={currentLocation.flickrTag}
+                               user_id="53573944@N00"
+                             />
+                         </div> 
+                         </div>
+                         : ''}
                           <div>
                             {currentLocation.videoEmbed
                               ? <div className="player-wrapper">

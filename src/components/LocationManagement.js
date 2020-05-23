@@ -20,6 +20,7 @@ const LocationsList = () => {
   const retrieveLocations = () => {
     LocationDataService.getAll()
       .then (response => {
+        document.body.classList.remove ('locations-loaded');
         setLocations (response.data.reverse ());
         document.body.classList.add ('locations-loaded');
         console.log (response.data);
@@ -66,7 +67,7 @@ const LocationsList = () => {
             type="button"
             onClick={retrieveLocations}
           >
-            <span class="material-icons">map</span>  Kaikki
+            <span className="material-icons">map</span>  Kaikki
           </button>
         <button
             className="btn btn-secondary"
@@ -143,7 +144,7 @@ const LocationsList = () => {
               <div className="col-sm control">
                 <p>
                   <Link to={'/view/' + location.id} className="open">
-                    Avaa uudessa ikkunassa
+                    Avaa
                   </Link>
                 </p>
                 <p>
