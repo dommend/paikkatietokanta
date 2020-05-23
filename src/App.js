@@ -5,16 +5,17 @@ import { Preloader, Placeholder } from 'react-preloading-screen';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.scss";
 /* Import components */
+import LocationsView from "./components/LocationsView";
+import ModuleView from './components/ModuleView';
+import MapView from './components/MapView';
+import GridView from './components/GridView';
+import ListView from './components/ListView';
+import InfoPage from './components/InfoPage';
 import AddLocation from "./components/AddLocation";
-import LocationEdit from "./components/LocationEdit";
 import LocationView from "./components/LocationView";
-import LocationsList from "./components/LocationList";
-import ModuleMapView from './components/ModuleMapView';
-import LocationMapView from './components/LocationMapView';
-import LocationGrid from './components/LocationGrid';
+import LocationEdit from "./components/LocationEdit";
 import NotFoundPage from './components/NotFoundPage';
-import Info from './components/Info';
-import LocationsManagement from './components/LocationManagement';
+
 function App() {
 
   return (
@@ -32,22 +33,22 @@ function App() {
               </NavLink >
               </li>
               <li className="nav-item">
-                <NavLink to={"/module-view"} className="nav-link module" activeClassName="active">
+                <NavLink to={"/module"} className="nav-link module" activeClassName="active">
                 <span className="material-icons">dashboard</span>  Moduuli
               </NavLink >
               </li>
               <li className="nav-item">
-                <NavLink to={"/map-view"} className="nav-link map" activeClassName="active">
+                <NavLink to={"/map"} className="nav-link map" activeClassName="active">
                 <span className="material-icons">map</span>  Map
               </NavLink >
               </li>
               <li className="nav-item">
-                <NavLink to={"/grid-view"} className="nav-link grid" activeClassName="active">
+                <NavLink to={"/grid"} className="nav-link grid" activeClassName="active">
                 <span className="material-icons">grid_on</span>   Gridi
               </NavLink >
               </li>
               <li className="nav-item">
-                <NavLink to={"/locations-management"} className="nav-link list" activeClassName="active">
+                <NavLink to={"/list"} className="nav-link list" activeClassName="active">
                 <span className="material-icons">reorder</span>  Lista
               </NavLink >
               </li>
@@ -71,13 +72,13 @@ function App() {
         { /* Switch / Route */}
         <Switch>
           <Redirect exact from="/" to="/locations" />
-          <Route exact path={["/", "/locations"]} component={LocationsList} />
+          <Route exact path={["/", "/locations"]} component={LocationsView} />
+          <Route exact path="/module" component={ModuleView} />
+          <Route exact path="/map" component={MapView} />
+          <Route exact path="/grid" component={GridView} />
+          <Route exact path="/list" component={ListView} />
+          <Route exact path="/info" component={InfoPage} />
           <Route exact path="/add" component={AddLocation} />
-          <Route exact path="/locations-management" component={LocationsManagement} />
-          <Route exact path="/info" component={Info} />
-          <Route exact path="/map-view" component={LocationMapView} />
-          <Route exact path="/module-view" component={ModuleMapView} />
-          <Route exact path="/grid-view" component={LocationGrid} />
           <Route exact path="/edit/:id" component={LocationEdit} />
           <Route exact path="/view/:id" component={LocationView} />
           { /* 404-sivu */}

@@ -31,6 +31,9 @@ $special: orange;
 $special-hover: rgb(255, 238, 0);
 $favorie: crimson;
 
+
+* { transition: none !important;}
+
 /** General **/
 .locationView-page .details::-webkit-scrollbar,
 #place::-webkit-scrollbar,
@@ -231,6 +234,7 @@ nav a.navbar-brand:active {
 #page.content-page .innercontainer {
   background: $neutral1 !important;
   padding: 30px;
+  border-radius:5px;
 }
 
 .innercontainer.search {
@@ -320,6 +324,9 @@ span.required {
 .btn-secondary:hover { background:$special; border-color:$special}
 .btn-secondary.focus, .btn-secondary:focus,
 .btn-secondary:not(:disabled):not(.disabled):active { background:$ok !important; border-color:$ok;} 
+
+.btn-outline-info { color:$fourth; border-color:$neutral6; padding:15px;}
+.btn-outline-info:hover { color:$neutral1; border-color:$fourth; background-color:$fourth;}
 /** Add, edit, places **/
 
 .row {
@@ -857,6 +864,17 @@ a:visited.link-to-flickr {
   margin: 0px 20px 0px 20px;
 }
 
+.location-management .row:first-of-type {
+  border-top-left-radius: 5px;
+  border-top-right-radius:5px;
+}
+
+.location-management .row:last-of-type {
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius:5px;
+}
+
+
 .location-management .row:nth-of-type(even) {
   background: $neutral7;
 }
@@ -1001,11 +1019,12 @@ h4 .material-icons {
 
 
 /** Sisältösivut **/
-.content-page p { max-width: calc(90em * 0.5); }
+.content-page p { max-width: calc(100em * 0.5); }
 .content-page h3 { margin-top:40px;}
 .content-page h5 { margin-top:30px;}
 .content-page h6 { margin-top:0px;}
-
+.content-page .row { margin:0px -15px 0px -15px !important; padding:0px !important;}
+.content-page .space { margin-top:30px !important;}
 /** Video, lightbox, player & toast **/
 
 .Toastify__toast--default {
