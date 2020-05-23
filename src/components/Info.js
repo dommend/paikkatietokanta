@@ -8,7 +8,7 @@ class Info extends React.Component {
           <div className="innercontainer">
             <h2>Tietoa paikkatietokannasta</h2>
             <p>
-              Paikkatietokanta on Jani Penttisen (<a href="http://penttinen.fi/">Penttinen.fi</a>) päättöprojektina syntynyt sivusto. Paikkatietokannan tarkoitus on yhdistää valokuvaharrastus, historiallinen dokumentointi ja ammatillinen focus kehittyä paremmaksi kooradiksi.</p>
+              Paikkatietokanta on Jani Penttisen (<a href="http://penttinen.fi/">Penttinen.fi</a>) päättöprojektina syntynyt sivusto. Paikkatietokannan tarkoitus on yhdistää valokuvaharrastus, historiallinen dokumentointi ja ammatillinen focus kehittyä paremmaksi koodariksi.</p>
               
               <p>Sivusto on rakennettu käyttämällä: <br />
               HTML5, SASS, MySQL, React, Node ja palju kohvi.
