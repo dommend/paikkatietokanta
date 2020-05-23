@@ -27,7 +27,7 @@ $neutral7: #f9f9f9;
 $alert: red;
 $ok: rgb(13, 163, 46);
 $ok-hover: rgb(15, 209, 57);
-$special: orange;
+$special: rgb(233, 33, 99);
 $special-hover: rgb(255, 238, 0);
 $favorie: crimson;
 
@@ -319,13 +319,29 @@ span.required {
   white-space: pre-wrap;
 }
 
+code { color:$special;}
+
+blockquote { background:$neutral7; padding:20px 30px 20px 30px;}
+blockquote ol {padding:0px 0px 0px 0px; margin:0px;  list-style:none, }
+blockquote ol li { margin-bottom:10px;  
+  counter-increment: my-awesome-counter;
+}
+blockquote ol li:last-child { margin-bottom:0px;}
+
+ol li::before {
+  content: counter(my-awesome-counter) ". ";
+  color: $special;
+  font-size: .9em;
+}
+
+
 /** Bootstarp buttonit **/
 .btn-secondary { background:$secondary; border-color:$secondary}
 .btn-secondary:hover { background:$special; border-color:$special}
 .btn-secondary.focus, .btn-secondary:focus,
 .btn-secondary:not(:disabled):not(.disabled):active { background:$ok !important; border-color:$ok;} 
 
-.btn-outline-info { color:$fourth; border-color:$neutral6; padding:15px;}
+.btn-outline-info { color:$secondary; border-color:$neutral6; padding:15px;}
 .btn-outline-info:hover { color:$neutral1; border-color:$fourth; background-color:$fourth;}
 /** Add, edit, places **/
 
