@@ -1,7 +1,7 @@
 {
   "name": "paikkatietokanta",
-  "version": "1.4.8",
-  "homepage": "https://paikkatietokanta.net/",
+  "version": "1.4.9",
+  "homepage": "./", 
   "private": false,
   "main": "server.js",
   "dependencies": {

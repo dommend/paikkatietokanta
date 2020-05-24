@@ -25,7 +25,6 @@ const LocationsList = () => {
 
   const retrieveLocations = () => {
     LocationDataService.getAll () 
-    // Jos halutaan saada kaikki tärkeäksi merkatut: findMarkedImportant //
       .then (response => {
         document.body.classList.remove ('locations-loaded');
         setLocations (response.data.reverse ());

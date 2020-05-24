@@ -115,6 +115,7 @@ ul#places::-webkit-scrollbar-thumb,
   flex-wrap: wrap;
 }
 
+
 a, a:visited { color:$secondary;}
 a:hover, a:active { color:$special;}
 
@@ -258,8 +259,7 @@ ol li::before {
   font-size: .9em;
 }
 
-
-/** Bootstarp buttonit **/
+/** Bootstarp buttons **/
 .btn-secondary { background:$secondary; border-color:$secondary}
 .btn-secondary:hover { background:$special; border-color:$special}
 .btn-secondary.focus, .btn-secondary:focus,
@@ -267,6 +267,7 @@ ol li::before {
 
 .btn-outline-info { color:$secondary; border-color:$neutral6; padding:15px;}
 .btn-outline-info:hover { color:$neutral1; border-color:$fourth; background-color:$fourth;}
+
 /** Add, edit, places **/
 
 .row {
@@ -314,7 +315,6 @@ small.even-smaller {
   position: relative;
   width: 100%;
 }
-
 
 .navbar-dark .navbar-brand { font-size:.9em; font-weight: bold;
 margin-left:-10px; margin-right:0px}
@@ -724,7 +724,6 @@ a:visited.link-to-flickr {
 
 
 /** Map-view **/
-
 .leaflet-container {
   height: calc(100vh - 56px);
 }
