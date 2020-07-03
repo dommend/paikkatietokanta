@@ -1,41 +1,46 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-
 const app = express();
+const ExpressCache = require('express-cache-middleware')
+const cacheManager = require('cache-manager')
 
+// Cache
+const cacheMiddleware = new ExpressCache(
+	cacheManager.caching({
+		store: 'memory', max: 10000, ttl: 3600
+	})
+)
+
+// Enable Cors
 var corsOptions = {
-  origin: "http://localhost:8081"
+  origin: ['https://paikkatietokanta.net', 'https://www.paikkatietokanta.net']
 };
 
 app.use(cors(corsOptions));
 
-// parse requests of content-type - application/json
+// Parse requests of content-type - application/json
 app.use(bodyParser.json());
 
-// parse requests of content-type - application/x-www-form-urlencoded
+// Parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
 
 const db = require("./app/models");
 
 db.sequelize.sync();
 
-// // drop the table if it already exists
-// db.sequelize.sync({ force: true }).then(() => {
-//   console.log("Drop and re-sync db.");
-//
+// Layer the caching in front of the other routes
+cacheMiddleware.attach(app)
 
-// simple route
+// Simple route
 app.get("/", (req, res) => {
   res.json({ message: "Hello there!" });
 });
 
 require("./app/routes/location.routes")(app);
 
-// set port, listen for requests
+// Set port, listen for requests
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
-
-
