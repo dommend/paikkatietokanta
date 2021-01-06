@@ -8,17 +8,13 @@ const get = id => {
   return http.get(`/locations/${id}`);
 };
 
-const create = data => {
-  return http.post("/locations", data);
+const getTag = id => {
+  return http.get(`/locations/tags/${id}`);
 };
 
-const update = (id, data) => {
-  return http.put(`/locations/${id}`, data);
-};
-
-const remove = id => {
-  return http.delete(`/locations/${id}`);
-};
+const getAllTags = () => {
+  return http.get(`/locations/tags/`);
+}
 
 const findByTitle = title => {
   return http.get(`/locations?title=${title}`);
@@ -28,12 +24,21 @@ const findMarkedImportant = () => {
   return http.get(`/locations/markedImportant`);
 }
 
+const findAllTitle = () => {
+  return http.get(`/locations/title`);
+}
+
+const getAllAdvanced = (params) => {
+  return http.get("/locations/pages", {params});
+};
+
 export default {
   getAll,
+  getAllTags,
   get,
-  create,
-  update,
-  remove,
+  getTag,
   findByTitle,
-  findMarkedImportant
+  findMarkedImportant,
+  findAllTitle,
+  getAllAdvanced
 };

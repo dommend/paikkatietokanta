@@ -1,33 +1,45 @@
 module.exports = (sequelize, Sequelize) => {
   const Location = sequelize.define("Locations", {
     title: {
-      type: Sequelize.STRING
+      type: Sequelize.STRING,
+      trim: true
     },
     description: {
-      type: Sequelize.TEXT('long')
+      type: Sequelize.TEXT('long'),
+      trim: true
     },
     markedImportant: {
-      type: Sequelize.BOOLEAN
+      type: Sequelize.BOOLEAN,
+      trim: true
     },
     coordinateN: {
-      type: Sequelize.STRING(15)  
+      type: Sequelize.STRING(15),
+      trim: true  
     },
     coordinateE: {
-      type: Sequelize.STRING(15) 
+      type: Sequelize.STRING(15),
+      trim: true 
     },
     videoEmbed:  {
-      type: Sequelize.STRING
+      type: Sequelize.STRING,
+      trim: true
     },
     url:  {
-      type: Sequelize.STRING
+      type: Sequelize.STRING,
+      trim: true
     },
     flickrTag:  {
-      type: Sequelize.STRING
+      type: Sequelize.STRING,
+      trim: true
     },
     flickrMore:  {
-      type: Sequelize.STRING
+      type: Sequelize.STRING,
+      trim: true
+    },
+    featuredImage: {
+      type: Sequelize.TEXT('long'),
+      trim: true
     }
   });
-
   return Location;
 };

@@ -4,69 +4,60 @@ import { Navbar, Nav } from 'react-bootstrap';
 import { Preloader, Placeholder } from 'react-preloading-screen';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.scss";
-/* Import components */
 import LocationsView from "./components/LocationsView";
-import ModuleView from './components/ModuleView';
-import MapView from './components/MapView';
-import GridView from './components/GridView';
-import ListView from './components/ListView';
-import InfoPage from './components/InfoPage';
-import AddLocation from "./components/AddLocation";
+import ModuleView from "./components/ModuleView";
+import MapView from "./components/MapView";
+import TagView from "./components/tagView";
+import Archive from "./components/ArchivePage";
+import GridAndListView from "./components/GridAndListView";
+import InfoPage from "./components/InfoPage";
 import LocationView from "./components/LocationView";
-import LocationEdit from "./components/LocationEdit";
 import NotFoundPage from './components/NotFoundPage';
+import Spinner from 'react-bootstrap/Spinner';
 
 function App() {
-
   return (
     <Router>
-
       <Navbar expand="md" variant="dark">
-        <Navbar.Brand href="/">Paikkatietokanta</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="mr-auto navbar-nav">
+        <Navbar.Brand href="/">
+          Paikkatietokanta
+        </Navbar.Brand>
+  
+           <Nav> 
             <ul>
               <li className="nav-item">
                 <NavLink to={"/locations"} className="nav-link frontpage" activeClassName="active">
-                <span className="material-icons">home</span> Etusivu
+                <span className="material-icons">home</span> <span className="nav-title">Etusivu</span>
               </NavLink >
               </li>
-              <li className="nav-item">
+              <li className="nav-item module">
                 <NavLink to={"/module"} className="nav-link module" activeClassName="active">
-                <span className="material-icons">dashboard</span>  Moduuli
+                <span className="material-icons">dashboard</span> <span className="nav-title">Moduuli</span>
               </NavLink >
               </li>
               <li className="nav-item">
                 <NavLink to={"/map"} className="nav-link map" activeClassName="active">
-                <span className="material-icons">map</span>  Map
+                <span className="material-icons">map</span> <span className="nav-title">Map</span>
               </NavLink >
               </li>
               <li className="nav-item">
                 <NavLink to={"/grid"} className="nav-link grid" activeClassName="active">
-                <span className="material-icons">grid_on</span>   Gridi
+                <span className="material-icons">grid_on</span> <span className="nav-title">Grid / List</span>
               </NavLink >
               </li>
-              <li className="nav-item">
-                <NavLink to={"/list"} className="nav-link list" activeClassName="active">
-                <span className="material-icons">reorder</span>  Lista
+               <li className="nav-item">
+                <NavLink to={"/archive"} className="nav-link archive" activeClassName="active">
+                <span className="material-icons">today</span> <span className="nav-title">Arkisto</span>
               </NavLink >
-              </li>
+              </li> 
               <li className="nav-item">
                 <NavLink to={"/info"} className="nav-link info" activeClassName="active">
-                <span className="material-icons">info</span>  Info
-              </NavLink >
-              </li>
-
-              <li className="nav-item">
-                <NavLink to={"/add"} className="nav-link add-new" activeClassName="active">
-                <span className="material-icons">add_box</span> Lisää
+                <span className="material-icons">info</span> <span className="nav-title">Info</span>
               </NavLink >
               </li>
             </ul>
           </Nav>
-        </Navbar.Collapse>
-      </Navbar>
+      </Navbar> 
 
       <main>
         { /* Switch / Route */}
@@ -75,29 +66,18 @@ function App() {
           <Route exact path={["/", "/locations"]} component={LocationsView} />
           <Route exact path="/module" component={ModuleView} />
           <Route exact path="/map" component={MapView} />
-          <Route exact path="/grid" component={GridView} />
-          <Route exact path="/list" component={ListView} />
+          <Route exact path="/grid" component={GridAndListView} />
+          <Route exact path="/archive" component={Archive} />
           <Route exact path="/info" component={InfoPage} />
-          <Route exact path="/add" component={AddLocation} />
-          <Route exact path="/edit/:id" component={LocationEdit} />
           <Route exact path="/view/:id" component={LocationView} />
-          { /* 404-sivu */}
+          <Route exact path="/tag/:id" component={TagView} />
+          { /* 404-page */}
           <Route path="*" component={NotFoundPage} />
         </Switch>
       </main>
       <Preloader>
         <Placeholder>
-          <pre>{`
-                     ₕₑₗₗₒ    ±
-                          [ºuº]
-                         └|___|┐
-                           ┘ └
-░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░                   
-
-  Please wait... 
-  Mr. Happy Robot is currently loading the database...
-
-░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░`}</pre>
+        <Spinner animation="border" variant="primary" /> 
         </Placeholder>
       </Preloader>
 
