@@ -7,7 +7,7 @@ index 35aeead..e265909 100644
  
      _defineProperty(_assertThisInitialized(_this), "generateApiUrl", function (props) {
 -      var extras = ["url_o", "url_m", props.thumbnailSizeParam, "license", "date_upload", "date_taken", "icon_server", "original_format", "last_update", "geo", "tags", "machine_tags", "o_dims", "views", "media", "path_alias", "owner_name"];
-+      var extras = ["url_h", "url_m", props.thumbnailSizeParam, "license", "date_upload", "date_taken", "icon_server", "original_format", "last_update", "geo", "tags", "machine_tags", "o_dims", "views", "media", "path_alias", "owner_name"];
++      var extras = ["url_l", "url_m", props.thumbnailSizeParam, "license", "date_upload", "date_taken", "icon_server", "original_format", "last_update", "geo", "tags", "machine_tags", "o_dims", "views", "media", "path_alias", "owner_name"];
        return buildUrl('https://api.flickr.com', {
          path: 'services/rest/',
          queryParams: {
@@ -16,7 +16,7 @@ index 35aeead..e265909 100644
            images: data.photos.photo.map(function (p) {
              return {
 -              src: p.url_o || p.url_m || 'https://s.yimg.com/pw/images/en-us/photo_unavailable.png',
-+              src: p.url_h || p.url_m || 'https://s.yimg.com/pw/images/en-us/photo_unavailable.png',
++              src: p.url_l || p.url_m || 'https://s.yimg.com/pw/images/en-us/photo_unavailable.png',
                thumbnail: p[props.thumbnailSizeParam],
                caption: (p.title || 'Untitled') + ": Photo by " + p.ownername
              };
@@ -29,7 +29,7 @@ index 776011b..0864581 100644
  
      _defineProperty(_assertThisInitialized(_this), "generateApiUrl", function (props) {
 -      var extras = ["url_o", "url_m", props.thumbnailSizeParam, "license", "date_upload", "date_taken", "icon_server", "original_format", "last_update", "geo", "tags", "machine_tags", "o_dims", "views", "media", "path_alias", "owner_name"];
-+      var extras = ["url_h", "url_m", props.thumbnailSizeParam, "license", "date_upload", "date_taken", "icon_server", "original_format", "last_update", "geo", "tags", "machine_tags", "o_dims", "views", "media", "path_alias", "owner_name"];
++      var extras = ["url_l", "url_m", props.thumbnailSizeParam, "license", "date_upload", "date_taken", "icon_server", "original_format", "last_update", "geo", "tags", "machine_tags", "o_dims", "views", "media", "path_alias", "owner_name"];
        return (0, _buildUrl["default"])('https://api.flickr.com', {
          path: 'services/rest/',
          queryParams: {
@@ -38,7 +38,7 @@ index 776011b..0864581 100644
            images: data.photos.photo.map(function (p) {
              return {
 -              src: p.url_o || p.url_m || 'https://s.yimg.com/pw/images/en-us/photo_unavailable.png',
-+              src: p.url_h || p.url_m || 'https://s.yimg.com/pw/images/en-us/photo_unavailable.png',
++              src: p.url_l || p.url_m || 'https://s.yimg.com/pw/images/en-us/photo_unavailable.png',
                thumbnail: p[props.thumbnailSizeParam],
                caption: (p.title || 'Untitled') + ": Photo by " + p.ownername
              };

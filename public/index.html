@@ -2,52 +2,24 @@
 <html lang="fi">
 
 <head>
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-13268247-13"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-13268247-13');
-</script>
   <meta charset="utf-8" />
-  <link rel="icon" href="https://paikkatietokanta.net/logo192.png" />
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#007bff" />
-  <meta name="description" content="Paikkatietokanta yhdistää valokuvaharrastus, historiallinen dokumentointi ja ammatillinen päämärä kehittyä paremmaksi koodariksi. Sivuston on tarkoitettu henkilökohtaiseen käyttöön." />
-  <link rel="apple-touch-icon" href="https://paikkatietokanta.net/logo192.png" />
-  <link rel="manifest" href="https://paikkatietokanta.net/manifest.json" />
-  <link rel="stylesheet" href="leaflet.css" crossorigin="" />
-  <link rel="stylesheet" href="font-awesome.min.css" />
-  <meta property="og:title" content="Paikkatietokanta">
-  <meta property="og:image" content="http://assets.paikkatietokanta.net/logo512.png">
-  <meta property="og:image:secure_url" content="https://paikkatietokanta.net/logo512.png">
-  <meta property="og:description" content="Paikkatietokanta yhdistää valokuvaharrastus, historiallinen dokumentointi ja ammatillinen päämäärä kehittyä paremmaksi koodariksi. Sivuston on tarkoitettu henkilökohtaiseen käyttöön." />
-  <meta property="og:image:type" content="image/png" /> 
-  <meta property="og:type" content="place" />
-  <script src="notsupported.js"></script>
+  <meta name="description" content="Paikkatietokanta" />
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
+    integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+    crossorigin="" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 
   <title>Paikkatietokanta</title>
-
-  <style type="text/css">
-  #noscript {  text-align:center; width:100%;
-    margin: 0; position: absolute;
-    top: 50%; left: 50%; margin-right: -50%;
-    transform: translate(-50%, -50%) }
-  </style>
 </head>
 
 <body>
-
-  <noscript>
-    <div id="noscript">
-    <p>( ͡° ͜ʖ ͡°)</p>
-    <p>Uh, oh. You need to enable JavaScript to run this app. <br />
-    Here's how: <a href="https://www.enable-javascript.com/">https://www.enable-javascript.com/</a></p>
-
-    <p>Paikkatietokanta.net <br /> &copy; jani@penttinen.fi</small></p>
-  </div>
-  </noscript>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
   <div id="root"></div>
 </body>
 

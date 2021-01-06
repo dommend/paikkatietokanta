@@ -2,12 +2,8 @@ module.exports = {
   HOST: "localhost",
   USER: "root",
   PASSWORD: "",
-  DB: "paikkati_paikkatietokanta",
+  DB: "paikkatietokanta",
   dialect: "mysql",
-  dialectOptions: {
-    charset: 'utf8',
-    collate: 'utf8_general_ci',
-  },
   pool: {
     max: 5,
     min: 0,

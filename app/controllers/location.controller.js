@@ -1,46 +1,40 @@
 const db = require("../models");
 const Location = db.locations;
-const Tag = db.tags;
 const Op = db.Sequelize.Op;
 
-// Retrieve all Locations and do advanced pagination
-const getPagination = (page, size) => {
-  const limit = size ? +size : 3;
-  const offset = page ? page * limit : 0;
-  return { limit, offset };
-};
+// Create and Save a new Location
+exports.create = (req, res) => {
+  // Validate request
+  if (!req.body.title) {
+    res.status(400).send({
+      message: "Content can not be empty!"
+    });
+    return;
+  }
 
-const getPagingData = (data, page, limit, listOrder, listTitle) => {
-  const { count: totalItems, rows: locations } = data;
-  const currentPage = page ? +page : 0;
-  const totalPages = Math.ceil(totalItems / limit);
-  return { totalItems, locations, totalPages, currentPage, listOrder, listTitle };
-};
+  // Create a Location
+  const location = {
+    title: req.body.title,
+    description: req.body.description,
+    coordinateN: req.body.coordinateN,
+    coordinateE: req.body.coordinateE,
+    markedImportant: req.body.markedImportant,
+    videoEmbed: req.body.videoEmbed,
+    url: req.body.url,
+    flickrTag: req.body.flickrTag,  
+    flickrMore: req.body.flickrMore  
+  };
 
-exports.findAllAdvance = (req, res) => {
-  const { page, size, title, listOrder, listTitle } = req.query;
-  var condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
-  const { limit, offset } = getPagination(page, size);
-
-  Location.findAndCountAll({
-    where: condition, limit, offset, order: [[`${listTitle}`, `${listOrder}`]],
-    include: [
-      {
-        model: Tag,
-        as: "tags",
-        attributes: ["id", "tagName"],
-        through: {
-          attributes: [],
-        },
-      },
-    ]
-  })
+  // Save Location in the database
+  Location.create(location)
     .then(data => {
-      const response = getPagingData(data, page, limit, listOrder, listTitle);
-      res.send(response);
+      res.send(data);
     })
-    .catch((err) => {
-      console.log(">> Error while retrieving Locations: ", err);
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while creating the Location."
+      });
     });
 };
 
@@ -49,45 +43,7 @@ exports.findAll = (req, res) => {
   const title = req.query.title;
   var condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
 
-  Location.findAll({ where: condition, order: [ [ 'createdAt', 'DESC' ]],
-  include: [
-    {
-      model: Tag,
-      as: "tags",
-      attributes: ["id", "tagName"],
-      through: {
-        attributes: [],
-      },
-    },
-  ],})
-    .then(data => {
-      res.send(data);
-    })
-    .catch(err => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while retrieving locations."
-      });
-    });
-};
-
-// Retrieve all Locations A-Z from the database.
-exports.findAllTitle = (req, res) => {
-  Location.findAll({ order: [ [ 'title', 'ASC' ]] })
-    .then(data => {
-      res.send(data);
-    })
-    .catch(err => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while retrieving locations."
-      });
-    });
-};
-
-// Find all markedImportant Location
-exports.findAllMarkedImportant = (req, res) => {
-  Location.findAll({ where: { markedImportant: true }, order: [ [ 'createdAt', 'DESC' ]] })
+  Location.findAll({ where: condition })
     .then(data => {
       res.send(data);
     })
@@ -102,88 +58,78 @@ exports.findAllMarkedImportant = (req, res) => {
 // Find a single Location with an id
 exports.findOne = (req, res) => {
   const id = req.params.id;
-  Location.findByPk(id, {
-    include: [
-      {
-        model: Tag,
-        as: "tags",
-        attributes: ["id", "tagName"],
-        through: {
-          attributes: [],
-        },
-      },
-    ],
-  })
+
+  Location.findByPk(id)
     .then(data => {
       res.send(data);
     })
-    .catch((err) => {
-      console.log(">> Error while finding location tag: ", err);
+    .catch(err => {
+      res.status(500).send({
+        message: "Error retrieving Location with id=" + id
+      });
     });
 };
 
-exports.findByTagID = (req, res) => {
-  const tag = req.params.tagID;
-  Tag.findByPk(tag, {
-    include: [
-      {
-        model: Location,
-        as: "locations",
-        attributes: ["id", "title", "description", "featuredImage", "URL", "coordinateN", "coordinateE"],
-        through: {
-          attributes: [],
-        },
-      },
-    ],
+// Update a Location by the id in the request
+exports.update = (req, res) => {
+  const id = req.params.id;
+
+  Location.update(req.body, {
+    where: { id: id }
   })
-    .then(data => {
-      res.send(data);
+    .then(num => {
+      if (num == 1) {
+        res.send({
+          message: "Location was updated successfully."
+        });
+      } else {
+        res.send({
+          message: `Cannot update Location with id=${id}. Maybe Location was not found or req.body is empty!`
+        });
+      }
     })
-    .catch((err) => {
-      console.log(">> Error while finding location tag: ", err);
+    .catch(err => {
+      res.status(500).send({
+        message: "Error updating Location with id=" + id
+      });
     });
 };
 
+// Delete a Location with the specified id in the request
+exports.delete = (req, res) => {
+  const id = req.params.id;
 
-
-exports.findByTagName = (req, res) => {
-  const tag = req.params.tagName;
-  Tag.findAll(tag, {
-    include: [
-      {
-        model: Location,
-        as: "locations",
-        attributes: ["id", "title"],
-        through: {
-        },
-      },
-    ],
+  Location.destroy({
+    where: { id: id }
   })
-    .then(data => {
-      res.send(data);
+    .then(num => {
+      if (num == 1) {
+        res.send({
+          message: "Location was deleted successfully!"
+        });
+      } else {
+        res.send({
+          message: `Cannot delete Location with id=${id}. Maybe Location was not found!`
+        });
+      }
     })
-    .catch((err) => {
-      console.log(">> Error while finding tag: ", err);
+    .catch(err => {
+      res.status(500).send({
+        message: "Could not delete Location with id=" + id
+      });
     });
 };
 
-exports.findAllTags = (req, res) => {
-  Tag.findAll({
-    // include: [
-    //   {
-    //     model: Location,
-    //     as: "locations",
-    //     attributes: ["id", "title"],
-    //     through: {
-    //       attributes: [],
-    //     },
-    //   },
-    // ],
-  })
+// find all markedImportant Location
+exports.findAllMarkedImportant = (req, res) => {
+  Location.findAll({ where: { markedImportant: true } })
     .then(data => {
       res.send(data);
     })
-    .catch((err) => {
-      console.log(">> Error while retrieving tags: ", err);
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving locations."
+      });
     });
 };

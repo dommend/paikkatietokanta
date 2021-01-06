@@ -4,7 +4,6 @@ const cors = require("cors");
 const app = express();
 const ExpressCache = require('express-cache-middleware')
 const cacheManager = require('cache-manager')
-const compression = require('compression');
 
 // Cache
 const cacheMiddleware = new ExpressCache(
@@ -15,7 +14,7 @@ const cacheMiddleware = new ExpressCache(
 
 // Enable Cors
 var corsOptions = {
-  origin: ['http://localhost:8080', 'http://localhost:8081', 'https://paikkatietokanta.net', 'https://www.paikkatietokanta.net']
+  origin: ['https://paikkatietokanta.net', 'https://www.paikkatietokanta.net']
 };
 
 app.use(cors(corsOptions));
@@ -25,8 +24,6 @@ app.use(bodyParser.json());
 
 // Parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
-
-app.use(compression()); //use compression 
 
 const db = require("./app/models");
 
